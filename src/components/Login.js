@@ -17,36 +17,32 @@ function Login({setIsLoggedIn}) {
       [e.target.name]: e.target.value
     });
   }
-//   function handleLoginSuccess(response) {
-//     const data = response.data
-//     setUserId(data.id); // set the userId state to the id of the logged-in user
-//   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-        fetch('https://grace-portfolio-app.onrender.com/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password,
-          }),
-        })
-        .then(response => {
-          if (response.ok) {
+        // fetch('https://grace-portfolio-app.onrender.com/auth/login', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify({
+        //     email: formData.email,
+        //     password: formData.password,
+        //   }),
+        // })
+        // .then(response => {
+        //   if (response.ok) {
             setIsLoggedIn(true);
-            response.json().then()
+            // response.json().then()
             navigate("/home");
-          } else {
-            throw new Error('Something went wrong');
-          }
-        })
-        .catch(error => {
-          console.error(error);
-        });   
+        //   } else {
+        //     throw new Error('Something went wrong');
+        //   }
+        // })
+        // .catch(error => {
+        //   console.error(error);
+        // });   
       
       
     }

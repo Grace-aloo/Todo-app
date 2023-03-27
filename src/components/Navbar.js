@@ -1,4 +1,5 @@
 import React from "react"
+import "./navbar.css"
 import { Link, useNavigate } from "react-router-dom";
 
 function NavBar({isLoggedIn,setIsLoggedIn}){
@@ -22,13 +23,13 @@ function NavBar({isLoggedIn,setIsLoggedIn}){
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul className="navbar-nav me-auto ms-2 mt-2">
+                  <ul className="navbar-nav ms-auto ms-2 mt-2">
 
                     <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
                     </li>
                 </ul>
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 {isLoggedIn?(
                     <li className="nav-item">
                     <Link className="nav-link" to='/' onClick={handleLogout}>Log out</Link>

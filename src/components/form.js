@@ -15,7 +15,8 @@ function Form({handleAddTodo,todoData}){
         setState({
             title:"",
             description:"",
-            priority: ""
+            priority: "",
+            status: ""
         })
       };
     return(

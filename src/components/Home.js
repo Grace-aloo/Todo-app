@@ -8,7 +8,6 @@ import './home.css'
 function Home(){
     const [todos,setTodos]=useState([])
     const [modal,setModal]=useState(false)
-    // const [modalTwo,setModalTwo] = useState(false)
     const [selectedTodoId,setSelectedTodoId]=useState(null)
     const [todoData,setTodoData]=useState({
         title:"",
@@ -17,7 +16,7 @@ function Home(){
     })
 
     useEffect(()=>{
-        fetch(`https://grace-portfolio-app.onrender.com/skills`)
+        fetch(`https://api.npoint.io/562907c8cb9f42c24217`)
         .then(res =>res.json())
         .then(data =>setTodos(data.data))
     },[])
@@ -29,9 +28,6 @@ function Home(){
           [e.target.name]: e.target.value
         });
     }
-    // function toggleModalTwo(){
-    //     setModalTwo(!modalTwo)
-    // }
 
     const toggleModal = (todo) => {
         setTodoData({...todo, id:todo.id})
@@ -117,13 +113,13 @@ function Home(){
         // // handle error
         // })
       }
+      console.log(selectedTodoId)
     return(
         <div>
             <Form
             handleAddTodo={handleAddTodo}
             todoData={todoData}
             handleChange={handleChange}/>
-            {/* <center><button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}>Add Todo</FontAwesomeIcon>Add Todo</button></center> */}
             <table className="table">
                 <thead>
                      <tr>
@@ -139,31 +135,24 @@ function Home(){
                     {todos.map(list=>{
                 return(
                     <tr key={list.id}>
-                        {modal?(<Modal
+                     {modal?(<Modal
                       modal={modal}
                       todoData={todoData}
                       handleUpdateTodo={handleUpdateTodo}
                       toggleModal={toggleModal}
                       handleChange={handleChange}
                       todo={list}/>):null}
-                    
-                    <td>{list.title}</td>
-                    <td>{list.description}</td>
-                    <td>{list.priority}</td>
-                    <td>{list.status}</td>  
-                    <td><button onClick={()=>toggleModal(list)} id="edit"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button></td>
-                    <td><button onClick={()=>handleDeleteSkill(list.id)} id="delete"><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button></td>           
+                      <td>{list.title}</td>
+                      <td>{list.description}</td>
+                      <td>{list.priority}</td>
+                      <td>{list.status}</td>  
+                      <td><button onClick={()=>toggleModal(list)} id="edit"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button></td>
+                      <td><button onClick={()=>handleDeleteSkill(list.id)} id="delete"><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button></td>           
                     </tr> 
                     
                 )})}
                 </tbody>
                 </table>
-                {/* {modalTwo?(<ModalTwo
-                modalTwo={modalTwo}
-                skillData={skillData}
-                handleAddSkill={handleAddSkill}
-                toggleModalTwo={toggleModalTwo}
-                handleChange={handleChange}/>):(null)} */}
         </div>
     )
 }

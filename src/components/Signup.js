@@ -21,30 +21,30 @@ function Signup({setIsLoggedIn}){
   }
   function handleSubmit(e) {
     e.preventDefault();
-        fetch('https://grace-portfolio-app.onrender.com/auth/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            firstname: formData.firstname,
-            lastname: formData.lastname,
-            username: formData.username,
-            email: formData.email,
-            password: formData.password,
-          }),
-        })
-        .then(response => {
-          if (response.ok) {
+        // fetch('https://grace-portfolio-app.onrender.com/auth/signup', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify({
+        //     firstname: formData.firstname,
+        //     lastname: formData.lastname,
+        //     username: formData.username,
+        //     email: formData.email,
+        //     password: formData.password,
+        //   }),
+        // })
+        // .then(response => {
+        //   if (response.ok) {
             // setIsLoggedIn(true);
             navigate("/");
-          } else {
-            throw new Error('Something went wrong');
-          }
-        })
-        .catch(error => {
-          console.error(error);
-        });   
+        //   } else {
+        //     throw new Error('Something went wrong');
+        //   }
+        // })
+        // .catch(error => {
+        //   console.error(error);
+        // });   
       
     }
     return (
